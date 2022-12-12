@@ -1,0 +1,30 @@
+{
+  "name": "incoming-webhook-notification",
+  "version": "1.0.0",
+  "description": "Microsoft Teams Toolkit Incoming Webhook Notification Sample",
+  "author": "longgt",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "ts-node ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/longgt/ms-teams-notification-bot"
+  },
+  "dependencies": {
+    "@microsoft/adaptivecards-tools": "^1.0.0",
+    "@octokit/webhooks": "^10.3.1",
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {
+    "@octokit/webhooks-types": "^6.7.0",
+    "@types/http-server": "^0.12.1",
+    "@types/node": "^18.11.12",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
