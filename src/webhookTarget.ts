@@ -64,7 +64,14 @@ export class WebhookTarget {
    * @param api_url Github API URL
    */
   public callGithubApi(api_url: string): Promise<string> {
-    return axios.get(api_url).then((res) => {
+    // Add Github API token for doing authorization, if existed
+    const headers = process.env.GITHUB_API_TOKEN ? {
+      'Authorization': `Bearer ${process.env.GITHUB_API_TOKEN}`
+    } : undefined;
+
+    return axios.get(api_url, {
+      headers
+    }).then((res) => {
       const { html_url } = res.data;
       return html_url;
     });
