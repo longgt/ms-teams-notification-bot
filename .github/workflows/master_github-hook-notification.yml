@@ -8,7 +8,7 @@ on:
     branches:
       - master
   workflow_dispatch:
-  
+
 env:
   APP_NAME: node-app    # set this to your application's name
 
@@ -34,13 +34,13 @@ jobs:
       - name: zip artifact    
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r name: ${{ env.APP_NAME }}.zip .
+          args: zip -qq -r ${{ env.APP_NAME }}.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: name: ${{ env.APP_NAME }}
-          path: name: ${{ env.APP_NAME }}.zip
+          name: ${{ env.APP_NAME }}
+          path: ${{ env.APP_NAME }}.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -58,11 +58,11 @@ jobs:
       - name: Unzip artifact
         uses: montudor/action-zip@v1
         with:
-          args: unzip -qq ${{ env.AZURE_WEBAPP_NAME }}.zip -d .
+          args: unzip -qq ${{ env.APP_NAME }}.zip -d .
 
       - name: npm install, build, and test
         run: |
-          rm -rf name: ${{ env.APP_NAME }}.zip
+          rm -rf ${{ env.APP_NAME }}.zip
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
